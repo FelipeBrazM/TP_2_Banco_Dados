@@ -1,0 +1,51 @@
+Listar consultas que ocorreram entre duas datas
+    (receber como entrada: data de início e data de fim do intervalo)
+    (retornar: nome do paciente, nome do médico, data, hora, valor, sala e retorno)
+
+    SELECT * FROM Consulta where 
+    (data between '2024-01-10' and '2024-01-13') 
+    and 
+    (hora between '09:00:00' and '10:00:00');
+
+==============================================================================================
+
+Listar todos os médicos que possuam uma determinada especialidade
+    (receber como entrada: nome da especialidade)
+    (retornar: nome dos médicos)
+
+    SELECT Pessoa.nome FROM Pessoa WHERE cpf IN (
+        SELECT cpf FROM Medico_tem_especialidade where nome_especialidade = "Cardiologia"
+    );
+
+==============================================================================================
+
+Listar todos os médicos disponíveis em um dado horário e dia
+    (receber: data e hora)
+    (retornar nome dos médicos)
+
+    SELECT nome FROM Pessoa JOIN Medico on Pessoa.cpf=Medico.cpf WHERE Medico.cpf NOT IN (
+        SELECT cpf_medico FROM Consulta where 
+        data = '2024-01-10' and hora = '10:00:00'
+    ) 
+
+==============================================================================================
+
+Listar remédios receitados para um determinado paciente e por um determinado médico 
+    (receber como entrada: cpf do paciente e cpf do médico)
+    (retornar:  nome dos remédios e data e hora da consulta que originou tal remédio receitado)
+
+==============================================================================================
+
+Listar todos os pacientes que fazem o uso de um determinado medicamento 
+
+==============================================================================================
+
+Listar contato de emergência do paciente 
+
+==============================================================================================
+
+Listar doenças cronicas de um determinado paciente
+
+==============================================================================================
+
+Listar todas as consultas que ocorreram em uma determinada sala
