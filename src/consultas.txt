@@ -34,6 +34,28 @@ Listar remédios receitados para um determinado paciente e por um determinado m�
     (receber como entrada: cpf do paciente e cpf do médico)
     (retornar:  nome dos remédios e data e hora da consulta que originou tal remédio receitado)
 
+    SELECT 
+    Remedio.nome, 
+    Receita.data_consulta, 
+    Receita.hora_consulta
+    FROM 
+        Remedio
+    JOIN 
+        Receita_contem_remedios AS RCR ON Remedio.ium = RCR.ium
+    JOIN 
+        Receita ON RCR.id_receita = Receita.id
+        AND RCR.cpf_paciente = Receita.cpf_paciente
+        AND RCR.cpf_medico = Receita.cpf_medico
+        AND RCR.data_consulta = Receita.data_consulta
+        AND RCR.hora_consulta = Receita.hora_consulta
+    WHERE 
+        RCR.id_receita IN (
+            SELECT id 
+            FROM Receita 
+            WHERE cpf_medico = '56789012345' 
+            AND cpf_paciente = '01234567890'
+        );
+
 ==============================================================================================
 
 Listar todos os pacientes que fazem o uso de um determinado medicamento 
