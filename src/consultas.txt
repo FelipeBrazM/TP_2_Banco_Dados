@@ -56,18 +56,12 @@ Listar remédios receitados para um determinado paciente e por um determinado m�
             AND cpf_paciente = '01234567890'
         );
 
-==============================================================================================
 
-Listar todos os pacientes que fazem o uso de um determinado medicamento 
 
 ==============================================================================================
-
-Listar contato de emergência do paciente 
-
-==============================================================================================
-
-Listar doenças cronicas de um determinado paciente
+Alterar descrição da especialidade do medico
+Alterar a especialidade do médico
+Alterar email/telefone de uma Pessoa
 
 ==============================================================================================
-
-Listar todas as consultas que ocorreram em uma determinada sala
+Deletar uma especialidade de um médico na tabela medico tem especialdiade
